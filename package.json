@@ -8,11 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/FGRibreau/humanize.git"
+    "url": "git://github.com/FGRibreau/humanizer.git"
   },
   "keywords": [
     "humanize",
-    "value"
+    "tool",
+    "unit",
+    "browser",
+    "nodejs"
   ],
   "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com)",
   "license": "MIT",

@@ -1,18 +1,21 @@
-Humanize [![Build Status](https://drone.io/github.com/FGRibreau/humanize/status.png)](https://drone.io/github.com/FGRibreau/humanize/latest)
+Humanizer [![Build Status](https://drone.io/github.com/FGRibreau/humanizer/status.png)](https://drone.io/github.com/FGRibreau/humanizer/latest)
 ========
 
-Humanize a value. `Humanize` provides "ago" libraries-like capabilities and so on...
-In fact, unlike other libraries, `humanize` can work with any type of unit and with any scale.
+Humanizer a value. `Humanizer` provides "ago" libraries-like capabilities and so on...
+In fact, unlike other libraries, `humanizer` can work with any type of unit at any scale.
+
+Humanizer is tested against browsers and NodeJS.
 
 ```bash
 npm install humanizer
 ```
 
+
 ```javascript
-var time = require('humanizer');
+var Humanizer = require('humanizer');
 
 // Define the time unit
-time = new Humanize('ms', 1) // the base unit is 1 `ms`
+time = new Humanizer('ms', 1) // the base unit is 1 `ms`
    .unit('day',  24*3600*1000)
    .unit('hour', 3600*1000)
    .unit('min',  60*1000)

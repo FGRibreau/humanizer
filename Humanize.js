@@ -1,4 +1,6 @@
-var _ = require('lodash');
+(function(){
+var isSSJS = 'undefined' !== typeof module && module.exports;
+var _      = isSSJS ? require('lodash') : _;
 
 function Humanize(baseUnitName, baseUnit){
   if(!baseUnitName || !baseUnit){throw new Error("Humanize({String}baseUnitName, {Number}baseUnit)");}
@@ -107,4 +109,9 @@ Humanize.prototype._humanize = function(value, f, _unit){
   return [this._round(value), this._baseUnitName];
 };
 
-module.exports = Humanize;
+if (isSSJS) {
+  module.exports = Humanize;
+} else {
+  this.Humanize = Humanize;
+}
+}());
