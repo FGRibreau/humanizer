@@ -1,5 +1,5 @@
 {
-  "name": "humanize",
+  "name": "humanizer",
   "version": "0.1.0",
   "description": "Humanize a value.",
   "main": "humanize.js",

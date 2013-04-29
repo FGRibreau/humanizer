@@ -4,8 +4,12 @@ Humanize [![Build Status](https://drone.io/github.com/FGRibreau/humanize/status.
 Humanize a value. `Humanize` provides "ago" libraries-like capabilities and so on...
 In fact, unlike other libraries, `humanize` can work with any type of unit and with any scale.
 
+```bash
+npm install humanizer
+```
+
 ```javascript
-var time = require('../Humanize');
+var time = require('humanizer');
 
 // Define the time unit
 time = new Humanize('ms', 1) // the base unit is 1 `ms`
