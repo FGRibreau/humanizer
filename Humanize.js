@@ -1,6 +1,5 @@
-(function(){
-var isSSJS = 'undefined' !== typeof module && module.exports;
-var _      = isSSJS ? require('lodash') : _;
+// humanizer v.0.1.2
+(function(_){
 
 function Humanize(baseUnitName, baseUnit){
   if(!baseUnitName || !baseUnit){throw new Error("Humanize({String}baseUnitName, {Number}baseUnit)");}
@@ -109,9 +108,9 @@ Humanize.prototype._humanize = function(value, f, _unit){
   return [this._round(value), this._baseUnitName];
 };
 
-if (isSSJS) {
+if ('undefined' !== typeof module && module.exports) {
   module.exports = Humanize;
 } else {
   this.Humanize = Humanize;
 }
-}());
+}('undefined' !== typeof module && module.exports ? require('lodash') : _));

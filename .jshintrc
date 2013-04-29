@@ -16,5 +16,5 @@
     "maxdepth": 2,
     "maxstatements": 20,
     "maxcomplexity": 5,
-    "predef":["module","require","exports","console","__dirname","process","setInterval","clearInterval","setTimeout","clearTimeout"]
+    "predef":["module","require","exports","console","__dirname","process","setInterval","clearInterval","setTimeout","clearTimeout", "_"]
 }
