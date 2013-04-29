@@ -1,5 +1,6 @@
 var Humanize = require('../Humanize');
 var _        = require('lodash');
+
 var time = null;
 module.exports  = {
   setUp: function(done) {
