@@ -1,4 +1,4 @@
-// humanizer v.0.1.2
+// humanizer v.0.1.3
 (function(_){
 
 function Humanize(baseUnitName, baseUnit){
@@ -9,6 +9,7 @@ function Humanize(baseUnitName, baseUnit){
   this._sorter       = Humanize.DEFAULT_SORTER;
   this._selector     = Humanize.DEFAULT_SELECTOR;
   this._round        = Humanize.DEFAULT_ROUND;
+  this._smartMode    = false;
 
   this.unit(baseUnitName, baseUnit);
 }
@@ -35,7 +36,7 @@ Humanize.DEFAULT_SORTER = function(a, b){
  * @return {Boolean} true if the value is good enough to be read by human
  */
 Humanize.DEFAULT_SELECTOR = function(currentValue, unit, rawValue){
-  return currentValue > 10 && currentValue < 1000;
+  return currentValue > 1 && currentValue < 1000;
 };
 
 /**
@@ -50,6 +51,10 @@ Humanize.prototype.unit = function(unit, value){
   return this;
 };
 
+Humanize.prototype.smartMode = function(toggle){
+  this._smartMode = !!toggle;
+  return this;
+};
 /**
  * Sort unit from higher to lowest
  * @return {Array} sorted array
@@ -67,6 +72,11 @@ Humanize.prototype.sortBy = function(f){
 
 Humanize.prototype.setRound = function(f){
   this._round = f;
+  return this;
+};
+
+Humanize.prototype.setSelector = function(f){
+  this._selector = f;
   return this;
 };
 
@@ -99,13 +109,22 @@ Humanize.prototype._humanize = function(value, f, _unit){
 
   for(var i = 0, l = this._units.length; i < l; i++){
     unit = this._units[i];
-    val = f(value, unit.value);
-    if((!_unit && this._selector(val, unit, value)) || unit.unit === _unit){
-      return [this._round(val), unit.unit];
+    if((!_unit && this._selector(f(value, unit.value), unit, value)) || unit.unit === _unit){
+      return this._return(value, f, unit, !!_unit);
     }
   }
 
   return [this._round(value), this._baseUnitName];
+};
+
+Humanize.prototype._return = function(value, f, unit, hasPreferedUnit){
+  var roundedVal = this._round(f(value, unit.value));
+
+  if(roundedVal < 1 && this._smartMode && hasPreferedUnit){
+    return this._humanize(value, f);
+  }
+
+  return [roundedVal, unit.unit];
 };
 
 if ('undefined' !== typeof module && module.exports) {

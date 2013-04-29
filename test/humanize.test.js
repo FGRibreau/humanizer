@@ -79,15 +79,35 @@ module.exports  = {
     // In item per `unit`
     t.deepEqual(
         time.humanizeRange(1841, +new Date(2013, 3, 29), +new Date(2013, 3, 29, 15, 47)),
-        [116.6, 'hour']);
-
-    t.deepEqual(
-        time.humanizeRange(1841, +new Date(2013, 3, 29), +new Date(2013, 3, 29, 15, 47), 'min'),
         [1.9, 'min']);
 
     t.deepEqual(
+        time.humanizeRange(1841, +new Date(2013, 3, 29), +new Date(2013, 3, 29, 15, 47), 'hour'),
+        [116.6, 'hour']);
+
+    t.deepEqual(
+        time.humanizeRange(1841, +new Date(2013, 3, 29), +new Date(2013, 3, 29, 15, 47), 'day'),
+        [2799.4, 'day']);
+
+    t.deepEqual(
         time.humanizeRange(4956, +new Date(2013, 3, 29), +new Date(2013, 3, 29, 15, 47)),
-        [314, 'hour']);
+        [5.2, 'min']);
+    t.done();
+  },
+
+  '.smart mode should select another unit if the current rounded value is 0': function(t){
+    time
+    .unit('day',  24*3600*1000)
+    .unit('hour', 3600*1000)
+    .unit('min',  60*1000)
+    .unit('sec',  1000)
+    .setRound(function(val){
+      return Math.round(val*10)/10;
+    });
+
+    t.deepEqual(time.humanizeRange(100, +new Date(), +new Date()+(24*3600*1000), 'min'), [0.1, 'min']);
+    time.smartMode(true);
+    t.deepEqual(time.humanizeRange(100, +new Date(), +new Date()+(24*3600*1000), 'min'), [4.2, 'hour']);
     t.done();
   }
 };
