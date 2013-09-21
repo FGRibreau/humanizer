@@ -1,4 +1,4 @@
-Humanizer [![Build Status](https://drone.io/github.com/FGRibreau/humanizer/status.png)](https://drone.io/github.com/FGRibreau/humanizer/latest)
+Humanizer [![Build Status](https://drone.io/github.com/FGRibreau/humanizer/status.png)](https://drone.io/github.com/FGRibreau/humanizer/latest) [![Gittip](http://badgr.co/gittip/fgribreau.png)](https://www.gittip.com/fgribreau/)
 ========
 
 Humanizer a value. `Humanizer` provides "ago" libraries-like capabilities and so on...
