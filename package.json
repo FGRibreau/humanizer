@@ -22,9 +22,9 @@
   "devDependencies": {
     "nodeunit": "~0.8.0",
     "grunt-shell": "~0.2.1",
-    "lodash": "~1.2.0"
+    "lodash": "~4.17.15"
   },
   "dependencies": {
-    "lodash": "~1.2.0"
+    "lodash": "~4.17.15"
   }
 }
