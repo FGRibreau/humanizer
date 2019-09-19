@@ -20,7 +20,7 @@
   "author": "Francois-Guillaume Ribreau <npm@fgribreau.com> (http://fgribreau.com)",
   "license": "MIT",
   "devDependencies": {
-    "nodeunit": "~0.8.0",
+    "nodeunit": "~0.11.3",
     "grunt-shell": "~0.2.1",
     "lodash": "~1.2.0"
   },
